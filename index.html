@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday 🎉</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      text-align: center;
+      color: white;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+
+    .page {
+      display: none;
+      padding-top: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.5s;
+    }
+
+    .active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      background: rgba(255,255,255,0.15);
+      padding: 20px;
+      margin: auto;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 350px;
+    }
+
+    input, button {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      margin-top: 10px;
+    }
+
+    button {
+      background: white;
+      color: #007BFF;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    img {
+      width: 200px;
+      border-radius: 15px;
+      margin: 10px;
+    }
+
+    #cake {
+      width: 240px;
+      cursor: pointer;
+    }
+
+    .spark {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    #startScreen {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #countdown {
+      font-size: 70px;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.2);}
+      100% {transform: scale(1);}
+    }
+
+    #bigWish {
+      font-size: 40px;
+      text-shadow: 0 0 20px white;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- START -->
+<div id="startScreen">
+  <button onclick="startSite()">Tap to Start 🎬</button>
+</div>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page active">
+  <div class="card">
+    <h2>Password 🔐</h2>
+    <input type="password" id="pass">
+    <br>
+    <button onclick="checkPass()">Unlock</button>
+    <p id="wrong"></p>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+  <div class="card">
+    <h2>Ready? 🎂</h2>
+    <button onclick="nextPage()">Next</button>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div id="pageCount" class="page">
+  <h1 id="countdown">3</h1>
+</div>
+
+<!-- BIG WISH -->
+<div id="pageWish" class="page">
+  <div id="bigWish">🎉 HAPPY BIRTHDAY 🎉</div>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+
+  <h2>✨ Memories ✨</h2>
+
+  <img src="https://picsum.photos/200">
+  <img src="https://picsum.photos/201">
+  <img src="https://picsum.photos/202">
+
+  <!-- CAKE -->
+  <div style="position:relative; display:inline-block;">
+
+    <img id="cake"
+      src="https://images.unsplash.com/photo-1599785209796-786432b228bc?w=500"
+      onclick="blowCandle()">
+
+    <!-- NAME -->
+    <div style="
+      position:absolute;
+      top:55%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      font-weight:bold;">
+      YOUR NAME 💙
+    </div>
+
+    <!-- CANDLE -->
+    <div id="flames" style="
+      position:absolute;
+      top:5%;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:24px;">
+      🕯️ 🕯️ 🕯️
+    </div>
+
+  </div>
+
+  <p id="cakeMsg" style="display:none;">🎉 Wish made!</p>
+
+  <br>
+  <button onclick="celebrate()">Celebrate 🎆</button>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="music" preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c6c4b8c71.mp3">
+</audio>
+
+<audio id="boom
